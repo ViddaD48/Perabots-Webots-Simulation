@@ -1,0 +1,206 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "../protos/Vortex.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.3272549749538392 0.7660378212525083 -0.5532542252696063 1.3150669226544913
+  position -1.7854776255585254 1.7186599748784872 4.67211473706196
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 2
+  floorAppearance PBRAppearance {
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/mosaic_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/mosaic_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/mosaic_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+}
+Solid {
+  translation 0.45 -0.73 0.05
+  rotation 0 0 -1 -0.13090030610042527
+  children [
+    DEF obstacle1 Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  boundingObject USE obstacle1
+  locked TRUE
+}
+Solid {
+  translation 0.666748 -0.198009 0.05
+  rotation 0 0 -1 -1.3089953071795861
+  children [
+    DEF obstacle2 Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE obstacle2
+  locked TRUE
+}
+Solid {
+  translation 0.36358 0.381911 0.05
+  rotation 0 0 -1 -1.047195307179586
+  children [
+    DEF obstacle3 Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.12 0.1 0.1
+      }
+    }
+  ]
+  name "solid(3)"
+  boundingObject USE obstacle3
+  locked TRUE
+}
+Solid {
+  translation -0.380764 0.661551 0.05
+  rotation 0 0 1 2.09439
+  children [
+    DEF obstacle4 Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.12 0.1 0.1
+      }
+    }
+  ]
+  name "solid(4)"
+  boundingObject USE obstacle4
+  locked TRUE
+}
+Solid {
+  translation -0.545793 -0.0756207 0.05
+  rotation 0 0 1 1.83259
+  children [
+    DEF obstacle5 Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.3 0.1
+      }
+    }
+  ]
+  name "solid(5)"
+  boundingObject USE obstacle5
+  locked TRUE
+}
+Solid {
+  translation -0.356546 -0.527723 0
+  rotation 0 0 1 2.8797896938995744
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.51 0.0005
+      }
+    }
+  ]
+  name "solid(6)"
+  locked TRUE
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../path/outer_path.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject Mesh {
+    url [
+      "../path/outer_path.obj"
+    ]
+  }
+  locked TRUE
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../path/inner_path.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(7)"
+  boundingObject Mesh {
+    url [
+      "../path/inner_path.obj"
+    ]
+  }
+  locked TRUE
+}
+Vortex {
+  hidden position_0_0 -186.03603415787921
+  hidden position_0_1 -161.89617836685446
+  hidden rotation_1 0.6861295603220474 0.2433138626782232 0.6855833944028085 2.6638746768588524
+  hidden rotation_2 0.5565430702284251 0.6172621308738033 0.5561000564375532 2.0348493795960145
+  translation -0.408823 -0.502886 -0.0035882
+  rotation -0.015038501095732749 0.01103030080368793 0.9998260728491599 -1.790325307179586
+  controller "finalcode"
+}

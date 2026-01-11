@@ -1,0 +1,205 @@
+#VRML_SIM R2025a utf8
+# Vortex robot PROTO - A differential drive robot with 6 distance sensors
+# Template language: javascript
+
+PROTO Vortex [
+    field SFVec3f translation 0 0 0
+    field SFRotation rotation 0 0 1 0
+    #field SFString controller "void"
+]
+{
+Robot {
+  translation IS translation
+  rotation IS rotation
+  controller IS controller
+  children [
+    DEF body Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF wheel_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0 0.025
+        rotation 0 1 0 1.57
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.005
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    DEF wheel_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0 0.025
+        rotation 0 1 0 1.57
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    DEF distance_senors Solid {
+      translation 0.0116 0.0435 0.06
+      children [
+        DistanceSensor {
+          rotation 0 0 1 1.31
+          name "ps4"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF distance_senors Solid {
+      translation -0.0116 0.0435 0.06
+      rotation 0 0 1 1.84
+      children [
+        DistanceSensor {
+          rotation 0 0 1 0.262
+          name "ps3"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(3)"
+    }
+    DEF distance_senors Solid {
+      translation 0.03182 0.03182 0.06
+      rotation 0 0 1 0.785
+      children [
+        DistanceSensor {
+          name "ps5"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(4)"
+    }
+    DEF distance_senors Solid {
+      translation -0.03182 0.03182 0.06
+      rotation 0 0 1 0.785
+      children [
+        DistanceSensor {
+          rotation 0 0 1 1.57
+          name "ps2"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    DEF distance_senors Solid {
+      translation 0.045 0 0.06
+      rotation 0 0 1 1.57
+      children [
+        DistanceSensor {
+          rotation 0 0 1 -1.57
+          name "ps6"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(6)"
+    }
+    DEF distance_senors Solid {
+      translation -0.045 0 0.06
+      rotation 0 0 1 1.57
+      children [
+        DistanceSensor {
+          rotation 0 0 1 1.57
+          name "ps1"
+        }
+        DEF ds Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(7)"
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "finalcode"
+}
+}
